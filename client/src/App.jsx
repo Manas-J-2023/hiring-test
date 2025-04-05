@@ -3,6 +3,7 @@ import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import {
   Plus,
   Trash2,
@@ -277,6 +278,13 @@ export default function App() {
             </motion.div>
 
             <div className="flex items-center gap-2">
+              <Link
+                to={`/audit`}
+                className="flex items-center gap-1 text-slate-600 dark:text-slate-300 h-8 rounded-md px-3 has-[>svg]:px-2.5
+                border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+              >
+                <span>Audit Logs</span>
+              </Link>
               <Button
                 onClick={() => {
                   localStorage.removeItem("token");
@@ -399,15 +407,15 @@ export default function App() {
                   {filter === "all"
                     ? "No tasks yet"
                     : filter === "active"
-                    ? "No active tasks"
-                    : "No completed tasks"}
+                      ? "No active tasks"
+                      : "No completed tasks"}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">
                   {filter === "all"
                     ? "Add a new task to get started"
                     : filter === "active"
-                    ? "All your tasks are completed"
-                    : "Complete some tasks to see them here"}
+                      ? "All your tasks are completed"
+                      : "Complete some tasks to see them here"}
                 </p>
               </motion.div>
             ) : (
@@ -450,7 +458,7 @@ export default function App() {
                             className={cn(
                               "text-slate-800 dark:text-slate-200 font-medium truncate transition-all",
                               todo.completed === 1 &&
-                                "line-through text-slate-400 dark:text-slate-500"
+                              "line-through text-slate-400 dark:text-slate-500"
                             )}
                           >
                             {todo.title}
